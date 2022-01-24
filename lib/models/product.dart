@@ -1,49 +1,38 @@
-// To parse this JSON data, do
-//
-//     final product = productFromMap(jsonString);
-
 import 'dart:convert';
-
-import 'package:productos_app/models/models.dart';
 
 class Product {
     Product({
-        required this.available,
-        required this.name,
-        this.picture,
+        this.id,
+        required this.productName,
         required this.price,
-        this.id
+        required this.quantity
     });
 
-    bool available;
-    String name;
-    String? picture;
-    double price;
     String? id;
+    String productName;
+    double price;
+    int quantity;
 
     factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
 
     String toJson() => json.encode(toMap());
 
     factory Product.fromMap(Map<String, dynamic> json) => Product(
-        available: json["available"],
-        name: json["name"],
-        picture: json["picture"],
+        productName: json["product_name"],
         price: json["price"].toDouble(),
+        quantity: json["quantity"].toInt(),
     );
 
     Map<String, dynamic> toMap() => {
-        "available": available,
-        "name": name,
-        "picture": picture,
+        "productName": productName,
         "price": price,
+        "quantity": quantity,
     };
 
     Product copy() => Product(
-      available: this.available,
-      name: this.name,
-      picture: this.picture,
-      price: this.price,
+      productName: productName,
+      price: price,
+      quantity: quantity,
       id: this.id,
     );
 

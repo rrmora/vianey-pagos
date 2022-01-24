@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
         child: Icon( Icons.add ),
         onPressed: () {
 
-          productsService.selectedProduct = new Product(
+          productsService.selectedProduct = new Product1(
             available: false, 
             name: '', 
             price: 0

@@ -3,7 +3,7 @@ import 'package:productos_app/models/models.dart';
 
 class ProductCard extends StatelessWidget {
 
-  final Product product;
+  final Product1 product;
 
   const ProductCard({
     Key? key, 

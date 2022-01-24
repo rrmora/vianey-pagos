@@ -28,7 +28,7 @@ class CheckAuthScreen extends StatelessWidget {
             } else {
               Future.microtask(() {
                 Navigator.pushReplacement(context, PageRouteBuilder(
-                  pageBuilder: (_, __, ___) => HomeScreen(),
+                  pageBuilder: (_, __, ___) => DashboardScreen(),
                   transitionDuration: Duration(seconds: 0)
                 ));
               });

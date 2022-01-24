@@ -5,12 +5,11 @@ class ProductFormProvider extends ChangeNotifier {
 
   GlobalKey<FormState> formKey = new GlobalKey<FormState>();
 
-  Product product;
+  Product1 product;
 
   ProductFormProvider( this.product );
 
   updateAvailability( bool value ) {
-    print(value);
     this.product.available = value;
     notifyListeners();
   }

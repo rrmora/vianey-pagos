@@ -12,8 +12,8 @@ class ProductsService extends ChangeNotifier {
   final storage = new FlutterSecureStorage();
 
   final String _baseUrl = 'pagos-vianey-default-rtdb.firebaseio.com';
-  final List<Product> products = [];
-  late Product selectedProduct;
+  final List<Product1> products = [];
+  late Product1 selectedProduct;
 
   File? newPictureFile;
 
@@ -24,7 +24,7 @@ class ProductsService extends ChangeNotifier {
     this.loadProducts();
   }
 
-  Future<List<Product>> loadProducts() async {
+  Future<List<Product1>> loadProducts() async {
 
     this.isLoading = true;
     notifyListeners();
@@ -37,7 +37,7 @@ class ProductsService extends ChangeNotifier {
     final Map<String, dynamic> productsMap = json.decode( resp.body );
 
     productsMap.forEach((key, value) {
-      final tempProduct = Product.fromMap( value );
+      final tempProduct = Product1.fromMap( value );
       tempProduct.id = key;
       this.products.add( tempProduct );
     });
@@ -51,7 +51,7 @@ class ProductsService extends ChangeNotifier {
   }
 
 
-  Future saveOrCreateProduct( Product product ) async {
+  Future saveOrCreateProduct( Product1 product ) async {
 
     isSaving = true;
     notifyListeners();
@@ -72,7 +72,7 @@ class ProductsService extends ChangeNotifier {
   }
   
 
-  Future<String> updateProduct( Product product ) async {
+  Future<String> updateProduct( Product1 product ) async {
 
     final url = Uri.https( _baseUrl, 'products/${ product.id }.json');
     final resp = await http.put( url, body: product.toJson() );
@@ -86,7 +86,7 @@ class ProductsService extends ChangeNotifier {
 
   }
 
-  Future<String> createProduct( Product product ) async {
+  Future<String> createProduct( Product1 product ) async {
 
     final url = Uri.https( _baseUrl, 'products.json');
     final resp = await http.post( url, body: product.toJson() );
