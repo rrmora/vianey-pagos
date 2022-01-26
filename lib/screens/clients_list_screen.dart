@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:productos_app/models/models.dart';
 import 'package:productos_app/screens/screens.dart';
 import 'package:productos_app/services/clients_service.dart';
 import 'package:productos_app/services/services.dart';
@@ -25,30 +24,40 @@ class ClientListScreen extends StatelessWidget {
             Navigator.popAndPushNamed(context, 'dashboard');
           })],
       ),
-      body: Container(
-        width: double.infinity,
-        child: DataTable( 
-          showCheckboxColumn: false,
-          columns: [
-            DataColumn(label: Text('Nombre')),
-            DataColumn(label: Text('Telefono')),
-            DataColumn(label: Text('Saldo')),
-          ],
-          rows:
-            clientsService.clients.map<DataRow>((e) => DataRow(
-              onSelectChanged: (b) {
-                Navigator.pushNamed(context, 'clientDetail', arguments: e);
-              },
-              cells: [
-                DataCell(Text(e.name + ' ' + e.lastname)),
-                DataCell(Text(e.phone.toString())),
-                DataCell(Text('\$' + e.balance.toStringAsFixed(2))),
-              ]
-            )).toList()
-        ),
+      body: clientsService.clients.isEmpty ? Container(
+        child: Center(child: Text('No hay informacion para mostrar'))
+      ) : ListView(
+        children: [
+          Center(child: Text('Aqui va a ir search')),
+          Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.0)),
+            child: Container(
+              width: double.infinity,
+              child: DataTable( 
+                showCheckboxColumn: false,
+                columns: [
+                  DataColumn(label: Text('Nombre')),
+                  DataColumn(label: Text('Telefono')),
+                  DataColumn(label: Text('Saldo')),
+                ],
+                rows:
+                  clientsService.clients.map<DataRow>((e) => DataRow(
+                    onSelectChanged: (b) {
+                      Navigator.pushNamed(context, 'clientDetail', arguments: e);
+                    },
+                    cells: [
+                      DataCell(Text(e.name + ' ' + e.lastname)),
+                      DataCell(Text(e.phone.toString())),
+                      DataCell(Text('\$' + e.balance.toStringAsFixed(2))),
+                    ]
+                  )).toList()
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.popAndPushNamed(context, 'product'),
+        onPressed: () => Navigator.popAndPushNamed(context, 'client'),
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
