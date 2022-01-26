@@ -37,9 +37,7 @@ class ClientListScreen extends StatelessWidget {
           rows:
             clientsService.clients.map<DataRow>((e) => DataRow(
               onSelectChanged: (b) {
-                print('Selected');
-                _onselected(b, e);
-               // _onselected(b, e)
+                Navigator.pushNamed(context, 'clientDetail', arguments: e);
               },
               cells: [
                 DataCell(Text(e.name + ' ' + e.lastname)),
@@ -50,16 +48,12 @@ class ClientListScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.popAndPushNamed(context, 'ClientDetail'),
+        onPressed: () => Navigator.popAndPushNamed(context, 'product'),
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
    );
 
 
-  }
-
-  void _onselected(bool? b, Client e) {
-    print(e);
   }
 }

@@ -10,6 +10,7 @@ class Client {
   String status;
   List<Product>? products;
   List<Payment>? payments;
+  List<Order>? orders;
   
   Client({
     this.id,
@@ -20,7 +21,8 @@ class Client {
     required this.phone,
     required this.status,
     this.products,
-    this.payments
+    this.payments,
+    this.orders
   });
 
    factory Client.fromJson(dynamic json) {
@@ -30,6 +32,9 @@ class Client {
    final paymentList = json['payments'] as List;
    List<Payment> payments =
        paymentList.map((i) => Payment.fromJson(i)).toList();
+   final orderList =  json['orders'] as List;
+   List<Order> orders =  
+      orderList.map((i) => Order.fromJson(i)).toList();
 
    return Client(
      id: json['id'] as String,
@@ -41,6 +46,7 @@ class Client {
      status: json['status'],
      products: products,
      payments: payments,
+     orders: orders,
    );
  }
   
@@ -53,6 +59,7 @@ class Client {
     "status": status,
     'products': products?.map((product) => product.toMap()).toList(growable: false),
     'payment': payments?.map((payment) => payment.toMap()).toList(growable: false),
+    'orders': orders?.map((order) => order.toMap()).toList(growable: false),
   };
 
    static Client fromMap(Map<String, dynamic> map) {
@@ -64,8 +71,9 @@ class Client {
       address: map['address'],
       phone: map['phone'].toString(),
       status: map['status'],
-      products: productList(map['products']),
-      payments: paymentList(map['payments'])
+      products: map.containsKey('products') ? productList(map['products']) : null,
+      payments: map.containsKey('payments') ? paymentList(map['payments']) : null,
+      orders: map.containsKey('orders') ? orderList(map['orders']) : null
     );
  }
 
@@ -87,6 +95,16 @@ class Client {
       payments.add( tempClient );
     });
    return payments;
+ }
+
+ static List<Order> orderList(Map<String, dynamic> map) {
+    final List<Order> orders = [];
+    map.forEach((key, value) {
+      final tempClient = Order.fromMap( value );
+      tempClient.id = key;
+      orders.add( tempClient );
+    });
+   return orders;
  }
 
   Client copy() => Client(
