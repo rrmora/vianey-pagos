@@ -19,47 +19,52 @@ class _OrdersListState extends State<OrdersList> {
         child: Center(
           child: Text('No hay informacion para mostrar')
         ),
-      ) : Padding(
-        padding: const EdgeInsets.all(7.0),
-        child: Container(
-          child: ExpansionPanelList(
-        expansionCallback: (int index, bool isExpanded) {
-          setState(() {
-            widget.orders![index].isExpanded = !isExpanded;
-          });
-        },
-        children: widget.orders!.map<ExpansionPanel>((Order item) {
-          return ExpansionPanel(
-            headerBuilder: (BuildContext context, bool isExpanded) {
-              return ListTile(
-                title: Text('Fecha del pedido: ' + item.orderDate),
-              );
-            },
-            body: Stack(
-              children: [
-                ListTile(
-                  title: Text('Estatus: ' + item.orderStatus, style: TextStyle( color: Colors.black87, fontSize: 18 )),
-                  subtitle:
-                      Text('Comentario: ' + item.comment, style: TextStyle( color: Colors.black38, fontSize: 16)),
-                  trailing: const Icon(Icons.edit, size: 35),
-                  onTap: () {
-                    setState(() {
-                      print(item);
-                    });
-                }),
-                Padding(
-                  padding: EdgeInsets.only(top: 50.0), 
-                  child: ProductsList(products: item.products)
-                )
-              ] 
-            ),
-            isExpanded: item.isExpanded,
-          );
-        }).toList(),
-    )
-        ),
-      ),
+      ) : _orderList(),
     );    
+  }
+
+  _orderList() {
+    return Padding(
+            padding: const EdgeInsets.all(7.0),
+            child: Container(
+              child: ExpansionPanelList(
+                expansionCallback: (int index, bool isExpanded) {
+                  setState(() {
+                    widget.orders![index].isExpanded = !isExpanded;
+                  });
+                },
+              children: widget.orders!.map<ExpansionPanel>((Order item) {
+                return ExpansionPanel(
+                  headerBuilder: (BuildContext context, bool isExpanded) {
+                    return ListTile(
+                      title: Text('Fecha del pedido: ' + item.orderDate),
+                    );
+                  },
+                  body: Stack(
+                    children: [
+                      ListTile(
+                        title: Text('Estatus: ' + item.orderStatus, style: TextStyle( color: Colors.black87, fontSize: 18 )),
+                        subtitle:
+                            Text('Comentario: ' + item.comment, style: TextStyle( color: Colors.black38, fontSize: 16)),
+                        trailing: const Icon(Icons.edit, size: 35),
+                        onTap: () {
+                          setState(() {
+                            print(item);
+                          });
+                        }
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 50.0), 
+                        child: ProductsList(products: item.products)
+                      )
+                    ] 
+                  ),
+                  isExpanded: item.isExpanded,
+                );
+              }).toList(),
+            )
+          ),
+        );
   }
 
 }

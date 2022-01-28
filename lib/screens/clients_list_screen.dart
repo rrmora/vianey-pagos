@@ -26,7 +26,13 @@ class ClientListScreen extends StatelessWidget {
       ),
       body: clientsService.clients.isEmpty ? Container(
         child: Center(child: Text('No hay informacion para mostrar'))
-      ) : ListView(
+      ) : _clientListTable(context, clientsService),
+      floatingActionButton: _floatingActionButton(context),
+   );
+  }
+
+  _clientListTable(context, clientsService) {
+    return ListView(
         children: [
           Center(child: Text('Aqui va a ir search')),
           Card(
@@ -55,14 +61,14 @@ class ClientListScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.popAndPushNamed(context, 'client'),
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-   );
+      );
+  }
 
-
+  _floatingActionButton(context) {
+    return FloatingActionButton(
+      onPressed: () => Navigator.popAndPushNamed(context, 'client'),
+      tooltip: 'Increment',
+      child: Icon(Icons.add)
+    );
   }
 }

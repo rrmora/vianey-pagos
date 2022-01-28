@@ -8,7 +8,15 @@ class ProductsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return _productList();
+  }
+
+  _productList() {
+    return products.isEmpty ? Container(
+      child: Center(
+        child: Text('No hay informacion para mostrar')
+      )
+    ) : Container(
         width: double.infinity,
         child: DataTable( 
           showCheckboxColumn: false,
@@ -21,7 +29,6 @@ class ProductsList extends StatelessWidget {
             this.products.map<DataRow>((e) => DataRow(
               onSelectChanged: (b) {
                 print('Selected');
-                _onselected(b, e);
               },
               cells: [
                 DataCell(Text(e.productName)),
@@ -33,7 +40,4 @@ class ProductsList extends StatelessWidget {
       );
   }
 
-  void _onselected(bool? b, Product e) {
-    print('Selected');
-  }
 }

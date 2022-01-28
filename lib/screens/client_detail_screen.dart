@@ -27,7 +27,14 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
             Navigator.popAndPushNamed(context, 'clientsList');
           })],
       ),
-      body: PageView(
+      body: _pageViewWidget(client),
+      floatingActionButton: _floatingActionButton(client),
+      bottomNavigationBar: _bottomNavigation(),
+    );
+  }
+
+  _pageViewWidget(client) {
+    return PageView(
         controller: _pageController,
         onPageChanged: (index) {
           setState(() {
@@ -38,8 +45,11 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
           OrdersList(orders: client.orders == null ? null : client.orders),
           PaymentsList(payments: client.payments == null ? null : client.payments),
         ]
-      ),
-      floatingActionButton: Visibility(
+      );
+  }
+
+  _floatingActionButton(client) {
+    return Visibility(
         child: FloatingActionButton(
           onPressed: () => {
             if (_currentIndex == 0) {
@@ -51,8 +61,11 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
           child: Icon(Icons.add),
         ),
         visible: !(_currentIndex == 1 && client.orders == null)
-      ),
-      bottomNavigationBar: BottomNavigationBar(
+      );
+  }
+
+  _bottomNavigation() {
+    return BottomNavigationBar(
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
@@ -67,7 +80,6 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
         onTap: (index) {
           _pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.ease);
         }
-      ),
-    );
+      );
   }
 }
