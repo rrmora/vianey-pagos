@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productos_app/models/models.dart';
+import 'package:productos_app/widgets/widgets.dart';
 
 class PaymentsList extends StatelessWidget {
 
@@ -10,9 +11,7 @@ class PaymentsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
-        child: this.payments == null ? Container(
-          child: Text('No hay elemtos para mostrar')
-        ) : _paymentListTable(),
+        child: this.payments == null ? CardNoProducts() : _paymentListTable(),
       );
   }
   
@@ -25,9 +24,9 @@ class PaymentsList extends StatelessWidget {
                   child: DataTable( 
                   showCheckboxColumn: false,
                   columns: [
-                    DataColumn(label: Text('Fecha')),
-                    DataColumn(label: Text('Monto')),
-                    DataColumn(label: Text('Balance')),
+                    DataColumn(label: Text('Fecha', style: TextStyle(fontSize: 18))),
+                    DataColumn(label: Text('Monto', style: TextStyle(fontSize: 18))),
+                    DataColumn(label: Text('Balance', style: TextStyle(fontSize: 18))),
                   ],
                   rows: this.payments == null ? const <DataRow>[] :
                     this.payments!.map<DataRow>((e) => DataRow(
@@ -35,9 +34,9 @@ class PaymentsList extends StatelessWidget {
                         print('Selected');
                       },
                       cells: [
-                        DataCell(Text(e.paymentDate)),
-                        DataCell(Text('\$' + e.amountPayment.toStringAsFixed(2))),
-                        DataCell(Text('\$' + e.balance.toStringAsFixed(2))),
+                        DataCell(Text(e.paymentDate, style: TextStyle(fontSize: 16))),
+                        DataCell(Text('\$' + e.amountPayment.toStringAsFixed(2), style: TextStyle(fontSize: 16))),
+                        DataCell(Text('\$' + e.balance.toStringAsFixed(2), style: TextStyle(fontSize: 16))),
                       ]
                     )).toList()
                   ),

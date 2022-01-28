@@ -8,6 +8,7 @@ export 'package:productos_app/widgets/product_image.dart';
 export 'package:productos_app/widgets/products_list.dart';
 export 'package:productos_app/widgets/payments_list.dart';
 export 'package:productos_app/widgets/orders_list.dart';
+export 'package:productos_app/widgets/card_no_products.dart';
 
 
 

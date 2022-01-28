@@ -66,14 +66,19 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
 
   _bottomNavigation() {
     return BottomNavigationBar(
+        backgroundColor: Colors.indigo,
         currentIndex: _currentIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        selectedFontSize: 18,
+        unselectedFontSize: 16,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.production_quantity_limits_outlined, size: 40, color: Colors.black87),
+            icon: Icon(Icons.production_quantity_limits_outlined, size: 40),
             label: 'Pedidos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.price_check_outlined, size: 40, color: Colors.black87),
+            icon: Icon(Icons.price_check_outlined, size: 40),
             label: 'Pagos'
           )
         ],

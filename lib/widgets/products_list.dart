@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productos_app/models/models.dart';
+import 'package:productos_app/widgets/widgets.dart';
 
 class ProductsList extends StatelessWidget {
 
@@ -12,18 +13,15 @@ class ProductsList extends StatelessWidget {
   }
 
   _productList() {
-    return products.isEmpty ? Container(
-      child: Center(
-        child: Text('No hay informacion para mostrar')
-      )
-    ) : Container(
+    return products.isEmpty ? CardNoProducts() :
+     Container(
         width: double.infinity,
         child: DataTable( 
           showCheckboxColumn: false,
           columns: [
-            DataColumn(label: Text('Nombre')),
-            DataColumn(label: Text('Cantidad')),
-            DataColumn(label: Text('Total')),
+            DataColumn(label: Text('Nombre', style: TextStyle(fontSize: 18))),
+            DataColumn(label: Text('Cantidad', style: TextStyle(fontSize: 18))),
+            DataColumn(label: Text('Total', style: TextStyle(fontSize: 18))),
           ],
           rows:
             this.products.map<DataRow>((e) => DataRow(
@@ -31,9 +29,9 @@ class ProductsList extends StatelessWidget {
                 print('Selected');
               },
               cells: [
-                DataCell(Text(e.productName)),
-                DataCell(Text(e.quantity.toString())),
-                DataCell(Text('\$' + e.price.toStringAsFixed(2))),
+                DataCell(Text(e.productName, style: TextStyle(fontSize: 16))),
+                DataCell(Text(e.quantity.toString(), style: TextStyle(fontSize: 16))),
+                DataCell(Text('\$' + e.price.toStringAsFixed(2), style: TextStyle(fontSize: 16))),
               ]
             )).toList()
         ),

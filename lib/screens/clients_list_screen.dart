@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:productos_app/screens/screens.dart';
 import 'package:productos_app/services/clients_service.dart';
 import 'package:productos_app/services/services.dart';
+import 'package:productos_app/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 class ClientListScreen extends StatelessWidget {
@@ -24,9 +25,8 @@ class ClientListScreen extends StatelessWidget {
             Navigator.popAndPushNamed(context, 'dashboard');
           })],
       ),
-      body: clientsService.clients.isEmpty ? Container(
-        child: Center(child: Text('No hay informacion para mostrar'))
-      ) : _clientListTable(context, clientsService),
+      body: clientsService.clients.isEmpty ? CardNoProducts() :
+      _clientListTable(context, clientsService),
       floatingActionButton: _floatingActionButton(context),
    );
   }
@@ -42,9 +42,9 @@ class ClientListScreen extends StatelessWidget {
               child: DataTable( 
                 showCheckboxColumn: false,
                 columns: [
-                  DataColumn(label: Text('Nombre')),
-                  DataColumn(label: Text('Telefono')),
-                  DataColumn(label: Text('Saldo')),
+                  DataColumn(label: Text('Nombre', style: TextStyle(fontSize: 18))),
+                  DataColumn(label: Text('Telefono', style: TextStyle(fontSize: 18))),
+                  DataColumn(label: Text('Saldo', style: TextStyle(fontSize: 18))),
                 ],
                 rows:
                   clientsService.clients.map<DataRow>((e) => DataRow(
@@ -52,9 +52,9 @@ class ClientListScreen extends StatelessWidget {
                       Navigator.pushNamed(context, 'clientDetail', arguments: e);
                     },
                     cells: [
-                      DataCell(Text(e.name + ' ' + e.lastname)),
-                      DataCell(Text(e.phone.toString())),
-                      DataCell(Text('\$' + e.balance.toStringAsFixed(2))),
+                      DataCell(Text(e.name + ' ' + e.lastname, style: TextStyle(fontSize: 16))),
+                      DataCell(Text(e.phone.toString(), style: TextStyle(fontSize: 16))),
+                      DataCell(Text('\$' + e.balance.toStringAsFixed(2), style: TextStyle(fontSize: 16))),
                     ]
                   )).toList()
               ),
