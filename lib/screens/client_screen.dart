@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productos_app/ui/input_decorations.dart';
 
 class ClientScreen extends StatefulWidget {
   ClientScreen({Key? key}) : super(key: key);
@@ -36,43 +37,83 @@ class _ClientScreenState extends State<ClientScreen> {
                     ], mainAxisAlignment: MainAxisAlignment.center,),
                   ),
                   TextFormField(  
-                  decoration: const InputDecoration(  
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.indigo)),
-                    labelStyle:   TextStyle(color: Colors.black87),
-                    icon: const Icon(Icons.person, color: Colors.indigo),  
-                    hintText: 'Nombre',  
-                    labelText: 'Nombre',  
-                  ),  
+                    autocorrect: false,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecorations.authInputDecoration(
+                      hintText: 'Nombre',
+                      labelText: 'Nombre',
+                      prefixIcon: Icons.person
+                    ),
+              // onChanged: ( value ) => loginForm.email = value,
+              // validator: ( value ) {
+
+              //     String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+              //     RegExp regExp  = new RegExp(pattern);
+                  
+              //     return regExp.hasMatch(value ?? '')
+              //       ? null
+              //       : 'El valor ingresado no luce como un correo';
+
+              // },
+            
+                  // decoration: const InputDecoration(  
+                  //   focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.indigo)),
+                  //   labelStyle:   TextStyle(color: Colors.black87),
+                  //   icon: const Icon(Icons.person, color: Colors.indigo),  
+                  //   hintText: 'Nombre',  
+                  //   labelText: 'Nombre',  
+                  // ),  
                 ), 
                 SizedBox( height: 10 ),
                 TextFormField(  
-                  decoration: const InputDecoration(  
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.indigo)),
-                    labelStyle:   TextStyle(color: Colors.black87),
-                    icon: const Icon(Icons.person, color: Colors.indigo),  
-                    hintText: 'Apellido',  
-                    labelText: 'Apellido',  
-                  ),  
+                  autocorrect: false,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecorations.authInputDecoration(
+                    hintText: 'Apellido',
+                    labelText: 'Apellido',
+                    prefixIcon: Icons.person
+                  ),
+                  // decoration: const InputDecoration(  
+                  //   focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.indigo)),
+                  //   labelStyle:   TextStyle(color: Colors.black87),
+                  //   icon: const Icon(Icons.person, color: Colors.indigo),  
+                  //   hintText: 'Apellido',  
+                  //   labelText: 'Apellido',  
+                  // ),  
                 ),
                 SizedBox( height: 10 ),
                 TextFormField(  
-                  decoration: const InputDecoration(  
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.indigo)),
-                    labelStyle:   TextStyle(color: Colors.black87),
-                    icon: const Icon(Icons.home, color: Colors.indigo),   
-                    hintText: 'Dirección',  
-                    labelText: 'Dirección',  
-                  ),  
+                  autocorrect: false,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecorations.authInputDecoration(
+                    hintText: 'Dirección',
+                    labelText: 'Dirección',
+                    prefixIcon: Icons.home
+                  ),
+                  // decoration: const InputDecoration(  
+                  //   focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.indigo)),
+                  //   labelStyle:   TextStyle(color: Colors.black87),
+                  //   icon: const Icon(Icons.home, color: Colors.indigo),   
+                  //   hintText: 'Dirección',  
+                  //   labelText: 'Dirección',  
+                  // ),  
                 ),
                 SizedBox( height: 10 ),
                 TextFormField(  
-                  decoration: const InputDecoration(  
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.indigo)),
-                    labelStyle:   TextStyle(color: Colors.black87),
-                    icon: const Icon(Icons.phone, color: Colors.indigo),  
-                    hintText: 'Teléfono',  
-                    labelText: 'Teléfono',  
-                  ),  
+                  autocorrect: false,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecorations.authInputDecoration(
+                    hintText: 'Teléfono',
+                    labelText: 'Teléfono',
+                    prefixIcon: Icons.phone
+                  ),
+                  // decoration: const InputDecoration(  
+                  //   focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.indigo)),
+                  //   labelStyle:   TextStyle(color: Colors.black87),
+                  //   icon: const Icon(Icons.phone, color: Colors.indigo),  
+                  //   hintText: 'Teléfono',  
+                  //   labelText: 'Teléfono',  
+                  // ),  
                 ), 
                  Center(  
                     child: Padding(
@@ -81,7 +122,7 @@ class _ClientScreenState extends State<ClientScreen> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                         disabledColor: Colors.grey,
                         elevation: 0,
-                        color: Colors.deepPurple,
+                        color: Color.fromRGBO(118, 35, 109, 1),
                         child: Container(
                           padding: EdgeInsets.symmetric( horizontal: 80, vertical: 15),
                           child: Text(

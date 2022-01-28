@@ -21,11 +21,11 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(client.name + ' - Balance: \$' + client.balance.toStringAsFixed(2)),
-        actions: [IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.popAndPushNamed(context, 'clientsList');
-          })],
+        // actions: [IconButton(
+        //   icon: Icon(Icons.arrow_back),
+        //   onPressed: () {
+        //     Navigator.popAndPushNamed(context, 'clientsList');
+        //   })],
       ),
       body: _pageViewWidget(client),
       floatingActionButton: _floatingActionButton(client),
@@ -66,19 +66,19 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
 
   _bottomNavigation() {
     return BottomNavigationBar(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Color.fromRGBO(118, 35, 109, 1),
         currentIndex: _currentIndex,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white70,
-        selectedFontSize: 18,
-        unselectedFontSize: 16,
+        selectedFontSize: 15,
+        unselectedFontSize: 12,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.production_quantity_limits_outlined, size: 40),
+            icon: Icon(Icons.production_quantity_limits_outlined, size: 28),
             label: 'Pedidos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.price_check_outlined, size: 40),
+            icon: Icon(Icons.price_check_outlined, size: 28),
             label: 'Pagos'
           )
         ],

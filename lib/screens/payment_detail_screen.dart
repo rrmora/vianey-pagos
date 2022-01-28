@@ -11,11 +11,11 @@ class PaymentDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Agregar Pago'),
-        actions: [IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.popAndPushNamed(context, 'clientDetail', arguments: client);
-          })],
+        // actions: [IconButton(
+        //   icon: Icon(Icons.arrow_back),
+        //   onPressed: () {
+        //     Navigator.popAndPushNamed(context, 'clientDetail', arguments: client);
+        //   })],
       )
     );
   }

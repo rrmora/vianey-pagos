@@ -11,12 +11,12 @@ class InputDecorations {
     return InputDecoration(
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.deepPurple
+            color: Color.fromRGBO(118, 35, 109, 1)
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.deepPurple,
+            color: Color.fromRGBO(118, 35, 109, 1),
             width: 2
           )
         ),
@@ -26,7 +26,7 @@ class InputDecorations {
           color: Colors.grey
         ),
         prefixIcon: prefixIcon != null 
-          ? Icon( prefixIcon, color: Colors.deepPurple )
+          ? Icon( prefixIcon, color: Color.fromRGBO(118, 35, 109, 1) )
           : null
       );
   }  
