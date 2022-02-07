@@ -33,16 +33,16 @@ class _OrdersListState extends State<OrdersList> {
                 return ExpansionPanel(
                   headerBuilder: (BuildContext context, bool isExpanded) {
                     return ListTile(
-                      title: Text('Fecha del pedido: ' + item.orderDate, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      title: Text('Fecha del pedido: ' + item.orderDate, style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                     );
                   },
                   body: Stack(
                     children: [
                       ListTile(
-                        title: Text('Estatus: ' + item.orderStatus, style: TextStyle( color: Colors.black87, fontSize: 16, fontWeight: FontWeight.bold)),
+                        title: Text('Estatus: ' + item.orderStatus, style: TextStyle( color: Colors.black87, fontSize: 15, fontWeight: FontWeight.bold)),
                         subtitle:
-                            Text('Comentario: ' + item.comment, style: TextStyle( color: Colors.black54, fontSize: 16)),
-                        trailing: const Icon(Icons.edit, size: 35),
+                            Text('Comentario: ' + item.comment, style: TextStyle( color: Colors.black54, fontSize: 15)),
+                        trailing: const Icon(Icons.edit, size: 30),
                         onTap: () {
                           setState(() {
                             print(item);

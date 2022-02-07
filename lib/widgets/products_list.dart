@@ -18,10 +18,11 @@ class ProductsList extends StatelessWidget {
         width: double.infinity,
         child: DataTable( 
           showCheckboxColumn: false,
+          columnSpacing: 30.0,
           columns: [
-            DataColumn(label: Text('Nombre', style: TextStyle(fontSize: 18))),
-            DataColumn(label: Text('Cantidad', style: TextStyle(fontSize: 18))),
-            DataColumn(label: Text('Total', style: TextStyle(fontSize: 18))),
+            DataColumn(label: Text('Nombre', style: TextStyle(fontSize: 17))),
+            DataColumn(label: Text('Cantidad', style: TextStyle(fontSize: 17))),
+            DataColumn(label: Text('Total', style: TextStyle(fontSize: 17))),
           ],
           rows:
             this.products.map<DataRow>((e) => DataRow(
@@ -29,9 +30,9 @@ class ProductsList extends StatelessWidget {
                 print('Selected');
               },
               cells: [
-                DataCell(Text(e.productName, style: TextStyle(fontSize: 16))),
-                DataCell(Text(e.quantity.toString(), style: TextStyle(fontSize: 16))),
-                DataCell(Text('\$' + e.price.toStringAsFixed(2), style: TextStyle(fontSize: 16))),
+                DataCell(Text(e.productName, style: TextStyle(fontSize: 15))),
+                DataCell(Text(e.quantity.toString(), style: TextStyle(fontSize: 15))),
+                DataCell(Text('\$' + e.price.toStringAsFixed(2), style: TextStyle(fontSize: 15))),
               ]
             )).toList()
         ),
