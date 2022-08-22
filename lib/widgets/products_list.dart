@@ -30,9 +30,9 @@ class ProductsList extends StatelessWidget {
                 print('Selected');
               },
               cells: [
-                DataCell(Text(e.productName, style: TextStyle(fontSize: 15))),
+                DataCell(Text(e.productName.toString(), style: TextStyle(fontSize: 15))),
                 DataCell(Text(e.quantity.toString(), style: TextStyle(fontSize: 15))),
-                DataCell(Text('\$' + e.price.toStringAsFixed(2), style: TextStyle(fontSize: 15))),
+                DataCell(Text(e.quantity.toString(), style: TextStyle(fontSize: 15))),
               ]
             )).toList()
         ),

@@ -11,13 +11,15 @@ class ClientDetailScreen extends StatefulWidget {
 }
 
 class _ClientDetailScreenState extends State<ClientDetailScreen> {
-
+  final  ClientCustom clientCustom = new ClientCustom();
   PageController _pageController = PageController(initialPage: 0);
   int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     final client = ModalRoute.of(context)!.settings.arguments as Client;
+    client.orders = client.orders != null ? client.orders : client.orders = [];
+    client.payments = client.payments != null ? client.payments : client.payments = [];
     return Scaffold(
       appBar: AppBar(
         title: Text(client.name + ' - Balance: \$' + client.balance.toStringAsFixed(2)),
@@ -34,6 +36,9 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
   }
 
   _pageViewWidget(client) {
+    final res = client;
+    clientCustom.client = res;
+    clientCustom.id = '';
     return PageView(
         controller: _pageController,
         onPageChanged: (index) {
@@ -42,8 +47,8 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
           });
         },
         children: [
-          OrdersList(orders: client.orders == null ? null : client.orders),
-          PaymentsList(payments: client.payments == null ? null : client.payments),
+          OrdersList(client: client == null ? null : client),
+          // PaymentsList(payments: client.payments == null ? null : client.payments),
         ]
       );
   }
@@ -53,7 +58,7 @@ class _ClientDetailScreenState extends State<ClientDetailScreen> {
         child: FloatingActionButton(
           onPressed: () => {
             if (_currentIndex == 0) {
-              Navigator.popAndPushNamed(context, 'orderDetail', arguments:  client)
+              Navigator.popAndPushNamed(context, 'orderDetail', arguments:  clientCustom)
             } else {
               Navigator.popAndPushNamed(context, 'paymentDetail', arguments: client)
             }

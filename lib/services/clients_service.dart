@@ -39,7 +39,6 @@ class ClientsService extends ChangeNotifier {
 
     this.isLoading = false;
     notifyListeners();
-    print(this.clients[0]);
 
     return this.clients;
   }

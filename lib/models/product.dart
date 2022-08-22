@@ -3,15 +3,15 @@ import 'dart:convert';
 class Product {
     Product({
         this.id,
-        required this.productName,
-        required this.price,
-        required this.quantity
+        this.productName,
+        this.price,
+        this.quantity
     });
 
     String? id;
-    String productName;
-    double price;
-    int quantity;
+    String? productName;
+    double? price;
+    int? quantity;
 
     factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
 

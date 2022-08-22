@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
         'orderDetail' : ( _ ) => OrderDetailScreen(),
         'paymentDetail' : ( _ ) => PaymentDetailScreen(),
         'product' : ( _ ) => ProductScreen(),
+        'productDetail' : ( _ ) => ProductDetailScreen(),
         'register'   : ( _ ) => RegisterScreen(),
       },
       scaffoldMessengerKey: NotificationService.messengerKey,

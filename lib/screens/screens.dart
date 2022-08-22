@@ -10,6 +10,7 @@ export 'package:productos_app/screens/login_screen.dart';
 export 'package:productos_app/screens/order_detail_screen.dart';
 export 'package:productos_app/screens/payment_detail_screen.dart';
 export 'package:productos_app/screens/product_screen.dart';
+export 'package:productos_app/screens/product_detail_screen.dart';
 export 'package:productos_app/screens/register_screen.dart';
 
 
